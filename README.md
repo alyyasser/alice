@@ -72,6 +72,7 @@ Alice is an HTTP Inspector tool for Flutter which helps debugging http requests.
 ✔️ Error handling  
 ✔️ Shake to open inspector  
 ✔️ HTTP calls search
+✔️ Flutter/Android logs
 
 ## Install
 
@@ -79,7 +80,7 @@ Alice is an HTTP Inspector tool for Flutter which helps debugging http requests.
 
 ```yaml
 dependencies:
-  alice: ^0.2.1
+  alice: ^0.4.1
 ```
 
 2. Install it
@@ -134,12 +135,6 @@ You can set `showInspectorOnShake` in Alice constructor to open inspector by sha
 Alice alice = Alice(..., showInspectorOnShake: true);
 ```
 
-If you want to use dark mode just add `darkTheme` flag:
-
-```dart
-Alice alice = Alice(..., darkTheme: true);
-```
-
 If you want to pass another notification icon, you can use `notificationIcon` parameter. Default value is @mipmap/ic_launcher.
 ```dart
 Alice alice = Alice(..., notificationIcon: "myNotificationIconResourceName");
@@ -151,11 +146,16 @@ If you want to limit max numbers of HTTP calls saved in memory, you may use `max
 Alice alice = Alice(..., maxCallsCount: 1000));
 ```
 
-
 If you want to change the Directionality of Alice, you can use the `directionality` parameter. If the parameter is set to null, the Directionality of the app will be used.
 ```dart
 Alice alice = Alice(..., directionality: TextDirection.ltr);
 ```
+
+If you want to hide share button, you can use `showShareButton` parameter.
+```dart
+Alice alice = Alice(..., showShareButton: false);
+```
+
 ### HTTP Client configuration
 If you're using Dio, you just need to add interceptor.
 
@@ -190,9 +190,11 @@ If you're using Chopper. you need to add interceptor:
 
 ```dart
 chopper = ChopperClient(
-    interceptors: alice.getChopperInterceptor(),
+    interceptors: [alice.getChopperInterceptor()],
 );
 ```
+
+Attention! Alice will add special "alice_token" header to the request in order to calculate correct id for the http call. 
 
 If you have other HTTP client you can use generic http call interface:
 ```dart
@@ -215,6 +217,26 @@ Alice supports saving logs to your mobile device storage. In order to make save 
 ```xml
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 ```
+
+## Flutter logs
+
+If you want to log Flutter logs in Alice, you may use these methods:
+
+```dart
+alice.addLog(log);
+
+alice.addLogs(logList);
+```
+
+
+## Inspector state
+
+Check current inspector state (opened/closed) with:
+
+```dart
+alice.isInspectorOpened();
+```
+
 
 ## Extensions
 You can use extensions to shorten your http and http client code. This is optional, but may improve your codebase.

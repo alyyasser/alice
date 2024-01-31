@@ -1,3 +1,56 @@
+# 0.4.1
+* Updated dependencies.
+* Alice requires now min sdk version 22, and compile sdk version 34 for android.
+
+# 0.4.0
+* [BREAKING_CHANGE] Updated dart min version to 3.0.0.
+* [BREAKING_CHANGE] Removed `darkTheme` parameter. Alice will now automatically detect the color scheme.
+* [BREAKING_CHANGE] Alice will now return chopper interceptor instance instead of list with that interceptor.
+* Added `isInspectorOpened` method to check inspector state.
+* Added support for macOS.
+* Fixed issue with the same http call not properly handled with chopper. Alice will add "alice_token" to the headers of the request to identify given http call.
+* Fixed lints.
+* Updated dependencies.
+* Updated example.
+
+# 0.3.3
+* Updated dependencies
+* Added fix for call time for http package (by itsara-odds https://github.com/itsara-odds)
+
+# 0.3.2
+* Removed video player.
+* Link to the video will be displayed instead of video player.
+
+# 0.3.1
+* Fixed flutter version upper bound
+
+# 0.3.0
+* Added logger feature (by Bartosz Gasztych https://github.com/bgasztych)
+* Updated Android configuration (by Bartosz Gasztych https://github.com/bgasztych)
+* Updated Flutter configuration (by Bartosz Gasztych https://github.com/bgasztych)
+* Updated dependencies (by Bartosz Gasztych https://github.com/bgasztych)
+* Updated chopper extension
+* Changed open_file to open_filex 
+* General refactor
+
+# 0.2.5
+* Added showShareButton in Alice constructor.
+* Added support for Android 12 (by Igor Kurek https://github.com/ikurek )
+* Updated dependencies.
+* Updated color scheme of Alice widgets.
+* Fixed issue with saving logs to file on Android.
+* Fixed lint
+
+## 0.2.4
+* Updated dependencies
+
+## 0.2.3
+* Updated dependencies
+
+## 0.2.2
+* Updated dependencies
+* Changed default sort filter of create time from ascending to descending. This will show latest HTTP calls on top of the list.
+
 ## 0.2.1
 * Added directionality support (by Abdol Hussain Mozaffari https://github.com/mozaffari)
 * Updated dependencies (by https://github.com/Nyan274)
